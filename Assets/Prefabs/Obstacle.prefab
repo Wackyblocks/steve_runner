@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f84be99f33c00b40b63e0e05110f336, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f84be99f33c00b40b63e0e05110f336, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f84be99f33c00b40b63e0e05110f336, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62,6 +62,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3f84be99f33c00b40b63e0e05110f336, type: 3}
       propertyPath: m_Name
+      value: obstaclePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f84be99f33c00b40b63e0e05110f336, type: 3}
+      propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -114,8 +118,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.55083776, y: 1.3565371, z: 1}
-  m_Center: {x: -0.031427264, y: 0.6369493, z: 0}
+  m_Size: {x: 0.55083776, y: 1.2, z: 1}
+  m_Center: {x: -0.031427264, y: 0.6, z: 0}
 --- !u!54 &7838350435728992835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,5 +145,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
