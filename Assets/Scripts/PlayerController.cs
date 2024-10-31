@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,7 +42,10 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
 
+        if (SceneManager.GetActiveScene().name == "Game Scene")
+        { 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        }
     }
 
     //gravity fix
@@ -81,6 +85,8 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             explosionParticle.Play();
             gameManager.UpdateScore(0);
+            
+            
 
 
             //check
@@ -96,9 +102,10 @@ public class PlayerController : MonoBehaviour
     {
         gameOver = true;
         Debug.Log("Game Over");
-        playerAnim.SetBool("Death_b", true);
-        playerAnim.SetInteger("DeathType_int", 1);
         
+        playerAnim.SetInteger("DeathType_int", 1);
+        playerAnim.SetBool("Death_b", true);
+
         dirtParticle.Stop();
         playerAudio.PlayOneShot(crashSound, 1.0f);
         
