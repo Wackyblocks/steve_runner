@@ -8,16 +8,20 @@ public class MoveLeft: MonoBehaviour
     private float leftBound = -15;
     private float scoreBound = 0;
     private PlayerController playerControllerScript;
-    //private GameManager gameManager;
+    private GameManager gameManager;
 
-
+    private bool scoreUpdated = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        GameObject gameManagerObject = GameObject.Find("Game Manager");
+        if (gameManagerObject != null)
+        {
+            gameManager = gameManagerObject.GetComponent<GameManager>();
+        }
+
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-        
     }
 
     // Update is called once per frame
@@ -33,10 +37,11 @@ public class MoveLeft: MonoBehaviour
             Destroy(gameObject);
         }
 
-        //add score
-        else if (transform.position.x < scoreBound && gameObject.CompareTag("Obstacle"))
+        //add score when surpassing obstacle
+        if (transform.position.x < scoreBound && gameObject.CompareTag("Obstacle") && !scoreUpdated)
         {
-            //gameManager.UpdateScore(1);
+            gameManager.UpdateScore(1);
+            scoreUpdated = true;
         }
     }
 }

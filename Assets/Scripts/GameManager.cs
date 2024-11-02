@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     //UI
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI scoreText2;
+    public TextMeshProUGUI scoreTextTop;
     public TextMeshProUGUI healthGUI;
     public TextMeshProUGUI gameOverText;
     public Button restartButton;
@@ -22,16 +23,23 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //ui prep
         gameOverText.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
         menuButton.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(false);
         scoreText2.gameObject.SetActive(true);
+        scoreTextTop.gameObject.SetActive(false);
         healthGUI.gameObject.SetActive(true);
 
+        //update health
+        int health = playerController.health;
+        healthGUI.text = "Health: " + health;
 
+        //ref controller
         playerController = FindObjectOfType<PlayerController>();
     }
+
 
     // Update is called once per frame
     public void GameOver()
@@ -42,6 +50,7 @@ public class GameManager : MonoBehaviour
         menuButton.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(true);
         scoreText2.gameObject.SetActive(false);
+        scoreTextTop.gameObject.SetActive(true);
         isGameActive = false;
     }
 
@@ -49,6 +58,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(sceneName: "Title");
@@ -56,9 +67,26 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore(int scoreToAdd)
     {
+
         score += scoreToAdd;
+
+        //display score in UI
         scoreText.text = "You scored " + score + " points!";
         scoreText2.text = "Score " + score;
+        
+
+        //fetch top score
+        int topScore = PlayerPrefs.GetInt("TopScore", 0);
+
+        //save score in p.prefab if only top score
+        if (score > topScore)
+        {
+            PlayerPrefs.SetInt("TopScore", score);
+            PlayerPrefs.Save();
+            Debug.Log("New top score: " + score);
+        }
+        //display top score
+        scoreTextTop.text = "Top score: " + topScore;
 
         //display health
         int health = playerController.health;
@@ -71,10 +99,11 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         score = 0;
 
+        //ui prep
         gameOverText.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
 
-
+        //refresh score
         UpdateScore(0);
     }
 
