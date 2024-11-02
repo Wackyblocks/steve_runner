@@ -1,5 +1,4 @@
 # Steve Runner
-### (Anton edition)
 
 > Made for a school assignment
 
