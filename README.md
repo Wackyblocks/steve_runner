@@ -2,8 +2,8 @@
 
 > Made for a school assignment
 
-Build verion: Unity 2022.3.29.f
-Download: https://unity.com/releases/editor/whats-new/2022.3.29
+Build verion: Unity 2022.3.39.f1
+Download: https://unity.com/releases/editor/whats-new/2022.3.39
 
 ![image](https://github.com/user-attachments/assets/0029920f-33ce-4484-bd6a-1ffa243e91a5)
 
