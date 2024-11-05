@@ -7,6 +7,11 @@ Download: https://unity.com/releases/editor/whats-new/2022.3.29
 
 ![image](https://github.com/user-attachments/assets/0029920f-33ce-4484-bd6a-1ffa243e91a5)
 
+> [!NOTE] 
+>  **⚠️ Building from package may not include project settings, if this happens load files from git repo, or fix manually by adding both scenes into your build settings**
+![image](https://github.com/user-attachments/assets/3f287ebc-351f-4e0c-8040-0d4e7d4c83f4)
+
+
 
 ---
 # Installation
